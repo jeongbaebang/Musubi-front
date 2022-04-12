@@ -45,7 +45,7 @@ export const SignUpInputs = () => {
       <CustomAuthInput
         id="password-comfirm"
         type="password"
-        label="비밀번호"
+        label="비밀번호 확인"
         autoComplete="new-password"
       />
     </>

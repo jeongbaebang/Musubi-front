@@ -13,11 +13,7 @@ const ThemeButton = styled(Button)<ButtonProps>(({ theme }) => ({
 }));
 
 export const CustomButton = <T extends ButtonProps>(props: T) => {
-  return (
-    <ThemeButton {...props} variant="contained">
-      {props.children}
-    </ThemeButton>
-  );
+  return <ThemeButton {...props}>{props.children}</ThemeButton>;
 };
 
 export const CustomLoadingButton = <T extends LoadingButtonProps>(props: T) => {
@@ -37,7 +33,7 @@ export const CustomLoadingButton = <T extends LoadingButtonProps>(props: T) => {
 
 export const CustomSubmitButton = <T extends ButtonProps>(props: T) => {
   return (
-    <ThemeButton {...props} type="submit" fullWidth>
+    <ThemeButton {...props} type="submit" fullWidth variant="contained">
       {props.children}
     </ThemeButton>
   );
