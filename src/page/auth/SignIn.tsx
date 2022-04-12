@@ -1,3 +1,5 @@
+import Form from "@/components/auth/Form";
+
 export function SignIn() {
-  return <div>SignIn</div>;
+  return <Form formType="signIn" />;
 }
