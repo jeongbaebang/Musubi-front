@@ -1,11 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
-import { SignIn } from "@/page/auth";
+import { SignIn, SignUp } from "@/page/auth";
 
 function App() {
   return (
     <Routes>
       <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 }
