@@ -1,17 +1,12 @@
+import { Route, Routes } from "react-router-dom";
+
+import { SignIn } from "./page/auth";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/signin" element={<SignIn />} />
+    </Routes>
   );
 }
 
