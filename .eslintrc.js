@@ -28,6 +28,7 @@ module.exports = {
     project: "./tsconfig.json",
   },
   rules: {
+    "import/extensions": "off",
     "import/no-unresolved": "off",
     "import/named": "off",
     "prettier/prettier": [
@@ -38,5 +39,5 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: [".eslintrc.js", "dist", "*.html"],
+  ignorePatterns: ["dist", "*.js", "*.html"],
 };
