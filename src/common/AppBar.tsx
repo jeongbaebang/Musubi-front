@@ -1,5 +1,5 @@
-import { AppBar, AppBarProps, Toolbar } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { AppBar, AppBarProps, Toolbar } from "@mui/material";
 
 const ThemeAppBar = styled(AppBar)<AppBarProps>(({ theme }) => ({
   backgroundColor: theme.status.primary.main,

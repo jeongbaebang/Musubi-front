@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { startLoading, finishLoading } from "@/modules/loading";
 import { call, put } from "redux-saga/effects";
+import { startLoading, finishLoading } from "@/modules/loading";
 
 /**
  * @param type 디스패치될 액션을 전달합니다.

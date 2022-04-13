@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 
-import { Message } from "./Message";
 import { Avatar } from "./Avatar";
+import { Message } from "./Message";
+
 export const UserState = () => {
   const num = 1;
   return (

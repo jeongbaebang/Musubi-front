@@ -1,7 +1,8 @@
 import { ActionType, createAction, createAsyncAction, createReducer } from "typesafe-actions";
 
+import { signIn as API } from "@/api/auth";
+import { createActionTypes, createRequesstSage } from "@/lib";
 import { RequestPayload, SuccessPayload, SignInState } from "@/types/modules/auth/signIn";
-import { createActionTypes } from "@/lib";
 
 const INIT_SIGNIN_FORM = "auth/INIT_SIGNIN_FORM";
 const [SIGNIN, SIGNIN_SUCCESS, SIGNIN_FAILURE] = createActionTypes("auth/SIGNIN");
@@ -38,3 +39,5 @@ export const signInReducer = createReducer<SignInState, SignInAction>(initialSta
     error: action.payload,
   }),
 });
+
+export const signInSaga = createRequesstSage(SIGNIN, signInFetch, API);

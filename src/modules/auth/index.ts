@@ -1,7 +1,12 @@
 import { combineReducers } from "redux";
+import { takeLatest } from "redux-saga/effects";
 
-import { signInReducer as signIn } from "./signIn";
+import { signInFetch, signInReducer as signIn, signInSaga } from "./signIn";
 
 export const authReducers = combineReducers({
   signIn,
 });
+
+export function* authSaga() {
+  yield takeLatest(signInFetch.request, signInSaga);
+}

@@ -1,6 +1,6 @@
 import { Link as RouterLink } from "react-router-dom";
-import { Box, Link, Grid, Avatar, Container, Typography } from "@mui/material";
 import { LockOutlined as LockOutlinedIcon } from "@mui/icons-material";
+import { Box, Link, Grid, Avatar, Container, Typography } from "@mui/material";
 
 import {
   SignInInputs,
@@ -10,7 +10,7 @@ import {
 } from "@/common";
 import { FormProps } from "@/types/components/auth/form";
 
-const Form: React.FC<FormProps> = ({ formType }) => {
+const Form: React.FC<FormProps> = ({ formType, loading, handleSubmit }) => {
   const form = {
     signIn: {
       title: "Sign in",
@@ -38,8 +38,7 @@ const Form: React.FC<FormProps> = ({ formType }) => {
   } as const;
 
   const { title, text, link } = form[formType];
-  //TODO: 로딩 상태 받아오기
-  const loading = false;
+
   return (
     <Container component="main" maxWidth="xs">
       <Box sx={sx.box}>
@@ -49,7 +48,7 @@ const Form: React.FC<FormProps> = ({ formType }) => {
         <Typography component="h1" variant="h5" aria-label={title}>
           {title}
         </Typography>
-        <Box component="form" noValidate sx={sx.formBox}>
+        <Box noValidate component="form" sx={sx.formBox} onSubmit={handleSubmit}>
           {formType === "signIn" ? (
             <Box sx={sx.field}>
               <SignInInputs />
