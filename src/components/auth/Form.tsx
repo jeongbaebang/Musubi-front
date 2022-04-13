@@ -8,7 +8,7 @@ import {
   CustomLoadingButton as LoadingButton,
   CustomSubmitButton as SubmitButton,
 } from "@/common";
-import { FormProps } from "@/types/auth/form";
+import { FormProps } from "@/types/components/auth/form";
 
 const Form: React.FC<FormProps> = ({ formType }) => {
   const form = {

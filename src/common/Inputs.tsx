@@ -1,14 +1,8 @@
 import { TextField } from "@mui/material";
 
-interface InputPorps {
-  autoFocus?: boolean;
-  id?: string;
-  type: "email" | "password";
-  label: "이메일 주소" | "비밀번호" | "비밀번호 확인";
-  autoComplete: "email" | "new-password" | "current-password";
-}
+import { InputProps } from "@/types/common";
 
-const CustomAuthInput: React.FC<InputPorps> = props => {
+const CustomAuthInput: React.FC<InputProps> = props => {
   const { type, label, autoComplete } = props;
   return (
     <TextField
@@ -26,7 +20,7 @@ const CustomAuthInput: React.FC<InputPorps> = props => {
 export const SignInInputs = () => {
   return (
     <>
-      <CustomAuthInput autoFocus type="email" label="이메일 주소" autoComplete="email" />
+      <CustomAuthInput autoFocus id="email" type="email" label="이메일 주소" autoComplete="email" />
       <CustomAuthInput
         id="password"
         type="password"
@@ -40,8 +34,8 @@ export const SignInInputs = () => {
 export const SignUpInputs = () => {
   return (
     <>
-      <CustomAuthInput autoFocus type="email" label="이메일 주소" autoComplete="email" />
-      <CustomAuthInput type="password" label="비밀번호" autoComplete="new-password" />
+      <CustomAuthInput autoFocus id="email" type="email" label="이메일 주소" autoComplete="email" />
+      <CustomAuthInput id="password" type="password" label="비밀번호" autoComplete="new-password" />
       <CustomAuthInput
         id="password-comfirm"
         type="password"

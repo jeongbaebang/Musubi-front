@@ -1,11 +1,6 @@
 import { Menu, MenuProps, MenuItem, Typography } from "@mui/material";
 
-interface RenderMenuProps {
-  anchorEl: HTMLElement | null;
-  onClose: () => void;
-  handleClick: () => void;
-  menuList: string[];
-}
+import { RenderMenuProps } from "@/types/common";
 
 const CustomMenu: React.FC<MenuProps> = props => {
   return (

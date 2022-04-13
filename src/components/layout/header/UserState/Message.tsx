@@ -1,9 +1,7 @@
 import { Badge, IconButton } from "@mui/material";
 import { Mail as MailIcon } from "@mui/icons-material";
 
-export const Message = () => {
-  const num = 1;
-
+export const Message: React.FC<{ num: number }> = ({ num }) => {
   return (
     <IconButton
       size="large"
