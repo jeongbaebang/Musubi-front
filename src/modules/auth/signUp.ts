@@ -1,6 +1,7 @@
 import { ActionType, createAction, createAsyncAction, createReducer } from "typesafe-actions";
 
-import { createActionTypes } from "@/lib";
+import { signUp as API } from "@/api/auth";
+import { createActionTypes, createRequesstSage } from "@/lib";
 import { RequestPayload, SignUpState, SuccessPayload } from "@/types/modules/auth/signUp";
 
 const INIT_SIGNUP_FORM = "auth/INIT_SIGNUP_FORM";
@@ -38,3 +39,5 @@ export const signUpReducer = createReducer<SignUpState, SignUpAction>(initialSta
     error: action.payload,
   }),
 });
+
+export const signUpSaga = createRequesstSage(SIGNUP, signUpFetch, API);
