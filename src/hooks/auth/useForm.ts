@@ -28,7 +28,7 @@ export const useForm = (type: "signIn" | "signUp") => {
   const { payload, error, loading, user } = useSelector((state: RootState) => ({
     payload: state.auth[type].payload,
     error: state.auth[type].error,
-    loading: state.loading[`auth/${type}`],
+    loading: state.loading[`auth/${type.toUpperCase()}`],
     user: state.auth.user.payload,
   }));
 
