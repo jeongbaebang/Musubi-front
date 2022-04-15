@@ -11,6 +11,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import App from "@/App";
 import { theme } from "@/theme";
 import { rootReducer, rootSaga } from "@/modules";
+import { checkUserStatus } from "@/lib";
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
@@ -19,6 +20,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(logger, sagaMiddleware))
 );
 sagaMiddleware.run(rootSaga);
+checkUserStatus(store);
 
 ReactDOM.render(
   <React.StrictMode>

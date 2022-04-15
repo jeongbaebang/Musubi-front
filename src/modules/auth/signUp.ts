@@ -1,13 +1,14 @@
 import { ActionType, createAction, createAsyncAction, createReducer } from "typesafe-actions";
 
 import { signUp as SIGNUP_API } from "@/api/auth";
-import { createActionTypes, createRequesstSage } from "@/lib";
+
 import {
   SignUpState,
   FailurePayload,
   RequestPayload,
   SuccessPayload,
 } from "@/types/modules/auth/signUp";
+import { createActionTypes, createRequesstSage } from "@/lib";
 
 const INIT_SIGNUP_FORM = "auth/INIT_SIGNUP_FORM";
 const [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE] = createActionTypes("auth/SIGNUP");

@@ -1,9 +1,11 @@
+import { call } from "redux-saga/effects";
 import { ActionType, createAction, createAsyncAction, createReducer } from "typesafe-actions";
 
+import { createActionTypes, createRequesstSage, storage } from "@/lib";
 import { check as CHECK_API, singOut as SIGNOUT_API } from "@/api/auth";
-import { createActionTypes, createRequesstSage } from "@/lib";
 import { FailurePayload, SuccessPayload, UserState } from "@/types/modules/auth/userState";
-import { call } from "redux-saga/effects";
+
+const removeItem = storage("removeItem");
 
 const TEMP_SET_USER = "user/TEMP_SET_USER";
 const SIGNOUT = "user/SIGNOUT";
@@ -17,7 +19,7 @@ export const checkFetch = createAsyncAction(CHECK, CHECK_SUCCESS, CHECK_FAILURE)
   FailurePayload
 >();
 
-const actions = { checkFetch, tempSetUserAction };
+const actions = { checkFetch, signOutAction, tempSetUserAction };
 type CheckAction = ActionType<typeof actions>;
 
 const initialState: UserState = {
@@ -26,6 +28,10 @@ const initialState: UserState = {
 };
 
 export const userReducer = createReducer<UserState, CheckAction>(initialState, {
+  [SIGNOUT]: state => ({
+    ...state,
+    payload: null,
+  }),
   [TEMP_SET_USER]: (state, action) => ({
     ...state,
     payload: action.payload,
@@ -43,6 +49,10 @@ export const userReducer = createReducer<UserState, CheckAction>(initialState, {
 });
 
 export const checkSaga = createRequesstSage(CHECK, checkFetch, CHECK_API);
+export function checkFailureSaga() {
+  removeItem("user");
+}
 export function* siginOutSaga() {
   yield call(SIGNOUT_API);
+  removeItem("user");
 }
