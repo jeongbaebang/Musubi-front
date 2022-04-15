@@ -23,16 +23,11 @@ const CustomMenu: React.FC<MenuProps> = props => {
   );
 };
 
-export const RenderMenu: React.FC<RenderMenuProps> = ({
-  anchorEl,
-  onClose,
-  handleClick,
-  menuList,
-}) => {
+export const RenderMenu: React.FC<RenderMenuProps> = ({ anchorEl, onClose, onClick, menuList }) => {
   return (
     <CustomMenu anchorEl={anchorEl} open={Boolean(anchorEl)} onClose={onClose}>
       {menuList.map(list => (
-        <MenuItem key={list} id={list} onClick={handleClick}>
+        <MenuItem key={list} id={list} onClick={onClick}>
           <Typography textAlign="center">{list}</Typography>
         </MenuItem>
       ))}

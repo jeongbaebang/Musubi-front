@@ -1,6 +1,6 @@
 import { ActionType, createAction, createAsyncAction, createReducer } from "typesafe-actions";
 
-import { signIn as API } from "@/api/auth";
+import { signIn as SIGNIN_API } from "@/api/auth";
 import { createActionTypes, createRequesstSage } from "@/lib";
 import {
   SignInState,
@@ -45,4 +45,4 @@ export const signInReducer = createReducer<SignInState, SignInAction>(initialSta
   }),
 });
 
-export const signInSaga = createRequesstSage(SIGNIN, signInFetch, API);
+export const signInSaga = createRequesstSage(SIGNIN, signInFetch, SIGNIN_API);
