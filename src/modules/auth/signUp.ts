@@ -2,7 +2,12 @@ import { ActionType, createAction, createAsyncAction, createReducer } from "type
 
 import { signUp as API } from "@/api/auth";
 import { createActionTypes, createRequesstSage } from "@/lib";
-import { RequestPayload, SignUpState, SuccessPayload } from "@/types/modules/auth/signUp";
+import {
+  SignUpState,
+  FailurePayload,
+  RequestPayload,
+  SuccessPayload,
+} from "@/types/modules/auth/signUp";
 
 const INIT_SIGNUP_FORM = "auth/INIT_SIGNUP_FORM";
 const [SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE] = createActionTypes("auth/SIGNUP");
@@ -11,7 +16,7 @@ export const initSignUpForm = createAction(INIT_SIGNUP_FORM)();
 export const signUpFetch = createAsyncAction(SIGNUP, SIGNUP_SUCCESS, SIGNUP_FAILURE)<
   RequestPayload,
   SuccessPayload,
-  string[]
+  FailurePayload
 >();
 
 const actions = { signUpFetch, initSignUpForm };

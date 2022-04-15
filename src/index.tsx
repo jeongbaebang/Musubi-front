@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { createLogger } from "redux-logger";
 import createSagaMiddleware from "redux-saga";
 import { BrowserRouter } from "react-router-dom";
 import { applyMiddleware, createStore } from "redux";
@@ -11,8 +12,12 @@ import App from "@/App";
 import { theme } from "@/theme";
 import { rootReducer, rootSaga } from "@/modules";
 
+const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(logger, sagaMiddleware))
+);
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(

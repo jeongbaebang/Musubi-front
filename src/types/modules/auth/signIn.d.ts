@@ -8,7 +8,11 @@ export interface SuccessPayload {
   user: string;
 }
 
+export interface FailurePayload {
+  error: string[];
+}
+
 export interface SignInState {
   payload: SuccessPayload | null;
-  error: string[] | null;
+  error: FailurePayload | null;
 }
