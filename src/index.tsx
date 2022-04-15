@@ -10,8 +10,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 import App from "@/App";
 import { theme } from "@/theme";
-import { rootReducer, rootSaga } from "@/modules";
 import { checkUserStatus } from "@/lib";
+import { rootReducer, rootSaga } from "@/modules";
 
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();

@@ -1,9 +1,10 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { storage } from "@/lib";
 import { RootState } from "@/modules";
+import { warningAlert, topDrawer } from "@/common/Alert";
 import { checkFetch } from "@/modules/auth/userState";
 import { RequestPayload } from "@/types/modules/auth/signUp";
 import { initSignUpForm, signUpFetch } from "@/modules/auth/signUp";
@@ -34,33 +35,48 @@ export const useForm = (type: "signIn" | "signUp") => {
   const dispatch = useDispatch();
   const nav = useNavigate();
 
-  const fetch = (paylaod: RequestPayload) => {
-    dispatch(form.fetch.request(paylaod));
-  };
+  const initForm = useCallback(() => {
+    dispatch(form.init());
+  }, [dispatch, form]);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
+  const fetch = useCallback(
+    (paylaod: RequestPayload) => {
+      dispatch(form.fetch.request(paylaod));
+    },
+    [dispatch, form]
+  );
 
-    fetch({
-      username: data.get("email") as string,
-      password: data.get("password") as string,
-    });
-  };
+  const handleSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+
+      fetch({
+        username: data.get("email") as string,
+        password: data.get("password") as string,
+      });
+    },
+    [fetch]
+  );
 
   useEffect(() => {
+    if (error) {
+      warningAlert(error);
+      return;
+    }
     if (payload) {
       dispatch(checkFetch.request());
     }
-  }, [payload, dispatch]);
+  }, [payload, dispatch, error]);
 
   useEffect(() => {
     if (user) {
       dispatch(form.init());
       nav("/", { replace: true });
       setItem("user", JSON.stringify(user));
+      topDrawer(user.username);
     }
   }, [dispatch, setItem, form, user, nav]);
 
-  return { loading, handleSubmit };
+  return { loading, handleSubmit, initForm };
 };

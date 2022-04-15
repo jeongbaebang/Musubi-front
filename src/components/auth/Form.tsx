@@ -10,7 +10,7 @@ import {
 } from "@/common";
 import { FormProps } from "@/types/components/auth/form";
 
-const Form: React.FC<FormProps> = ({ formType, loading, handleSubmit }) => {
+const Form: React.FC<FormProps> = ({ formType, loading, handleSubmit, initForm }) => {
   const form = {
     signIn: {
       title: "Sign in",
@@ -64,7 +64,7 @@ const Form: React.FC<FormProps> = ({ formType, loading, handleSubmit }) => {
           <Grid container>
             <Grid item xs />
             <Grid item>
-              <Link variant="body2" component={RouterLink} to={link}>
+              <Link variant="body2" component={RouterLink} to={link} onClick={initForm}>
                 {text}
               </Link>
             </Grid>

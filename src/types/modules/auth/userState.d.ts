@@ -1,5 +1,5 @@
 export interface SuccessPayload {
-  user: string;
+  username: string;
 }
 
 export interface FailurePayload {

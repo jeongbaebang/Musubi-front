@@ -7,11 +7,11 @@ const CustomAuthInput: React.FC<InputProps> = props => {
   return (
     <TextField
       {...props}
-      margin="normal"
+      fullWidth
       name={type}
       type={type}
       label={label}
-      fullWidth
+      margin="normal"
       autoComplete={autoComplete}
     />
   );
@@ -37,9 +37,9 @@ export const SignUpInputs = () => {
       <CustomAuthInput autoFocus id="email" type="email" label="이메일 주소" autoComplete="email" />
       <CustomAuthInput id="password" type="password" label="비밀번호" autoComplete="new-password" />
       <CustomAuthInput
-        id="password-comfirm"
         type="password"
         label="비밀번호 확인"
+        id="passwordComfirm"
         autoComplete="new-password"
       />
     </>
