@@ -1,2 +1,0 @@
-# Musubi-front
-Musubi-frontEnd
